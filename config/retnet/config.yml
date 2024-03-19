@@ -1,0 +1,31 @@
+model:
+  config:
+    layers: 1
+    hidden_dim: 512
+    ffn_size: 1024
+    heads: 8
+    # default False 是否将 retention中的 v翻倍
+    double_v_dim: False
+    # default 512
+    seq_len: 512
+    mini_seq: 32
+    # default 0.3
+    drop_out: 0.1
+  path: model.retnet.retnet
+  class_name: DiR
+  weight_path:
+
+#==========================设置训练参数================================
+train:
+  epochs: 5000 # 训练轮数
+  batch_size: 1000  # 一个批次中的样本数量
+  save_img_rate: 200 # 保存测试特片的步长
+#==========================设置数据集================================
+dataset:
+  train:
+    dataset_path: ../data/dataset/EMG/train  # the path to load train data
+  test:
+    dataset_path: ../data/dataset/EMG/test # the path to load test data
+#==========================日志=======================================
+logs:
+  name: DiR_4_EOG_pathch16_mini_seq32_hidden_dim512_layer_1_EMG
