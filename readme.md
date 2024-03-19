@@ -3,7 +3,7 @@
 <b>
 Bin Wang, 
 <a href='https://cist.cdut.edu.cn/info/1118/2380.htm'>Deng Fei</a>, 
-Peifan Jiang, 
+<a href='https://github.com/jiangpeifan'>Peifan Jiang</a>
 </b>
 
 <hr>
