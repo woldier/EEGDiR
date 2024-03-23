@@ -2,7 +2,7 @@
 
 <b>
 Bin Wang, 
-<a href='https://cist.cdut.edu.cn/info/1118/2380.htm'>Deng Fei</a>, 
+<a href='https://dengfei-ailab.github.io'>Deng Fei</a>, 
 <a href='https://github.com/jiangpeifan'>Peifan Jiang</a>
 </b>
 
