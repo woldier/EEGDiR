@@ -29,4 +29,4 @@ pip install -r requirements.txt
 ```
 ![Uformer](image/fig2.jpg)
 ## How to get dataset:
-- dataset is available at (coming soon): https://huggingface.co/datasets/woldier/EEGDiRDataset
+- dataset is available at (coming soon): https://huggingface.co/datasets/woldier/eeg_denoise_dataset
