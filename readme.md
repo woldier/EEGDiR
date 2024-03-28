@@ -67,11 +67,11 @@ Before running it for the first time, you need to generate a configuration file 
 ```shell
 accelerate config
 ```
-![accelerate_config](./image/accelerate_config.png)
+![accelerate_config](image/accelerate_config.png)
 
 Once you have configured the accelerate config file, you can view the configuration via `accelerate env`(Optional).
 
-Multi-GPU training can then be performed by `` calling `train.py``.
+Multi-GPU training can then be performed by calling `train.py`.
 ```shell
 accelerate launch --gpu_ids=all  {your_path}/train.py
 ```
@@ -86,7 +86,7 @@ If you find the cmd call scripts inelegant, you can also configure pycharm.
 - Set the mode to module, and give the model name: `accelerate.commands.launch`.
 - Set the parameter `--gpu_ids=all` to set the available GPUs, and specify the script path `{your_path}/trian.py`.
 
-![pycharm_config](./image/pycharm_config.png)
+![pycharm_config](image/pycharm_config.png)
 
 enjoy!
 
