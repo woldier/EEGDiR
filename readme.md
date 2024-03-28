@@ -27,6 +27,13 @@ The project is built with PyTorch 1.13.1, Python3.10, CUDA11.7. For package depe
 ```bash
 pip install -r requirements.txt
 ```
-![Uformer](image/fig2.jpg)
+
+## 
+
+---
+![EEGDiR](image/fig2.jpg)
 ## How to get dataset:
 - dataset is available at: https://huggingface.co/datasets/woldier/eeg_denoise_dataset
+
+---
+
