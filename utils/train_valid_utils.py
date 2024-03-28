@@ -104,7 +104,7 @@ def check_dir(base_path):
     :return:
     """
     if not os.path.exists(base_path):
-        os.mkdir(base_path)
+        os.makedirs(base_path)
         os.mkdir(os.path.join(base_path, 'img'))
         os.mkdir(os.path.join(base_path, 'logs'))
         os.mkdir(os.path.join(base_path, 'weight'))
