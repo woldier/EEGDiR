@@ -113,3 +113,34 @@ def check_dir(base_path):
 def config_backpack(conf_path, save_dir):
     config_save_path = save_dir + "config.yml"
     os.system("cp {} {}".format(conf_path, config_save_path))
+
+
+def init_optimizer(model, config: dict) -> torch.optim.Optimizer:
+    """
+    初始化优化器
+    :param model:
+    :param config:
+    :return:
+    """
+    opti_dict = {
+        "AdamW": torch.optim.AdamW,
+        "Adam": torch.optim.Adam,
+        "SDG": torch.optim.SGD,
+        "RMSprop": torch.optim.RMSprop
+    }
+    # 配置优化器
+    optim_conf = config["train"].get("optimizer")
+    if optim_conf is None:  # 如果说optimizer没有配置, 则加载默认的
+        optim = torch.optim.AdamW(model.parameters(), lr=config["train"]["learning_rate"], betas=(0.5, 0.9), eps=1e-08)
+        print(f'''using default optimizer AdamW(lr:{config["train"]["learning_rate"]},betas=(0.5, 0.9), eps=1e-08)''')
+    else:
+        keys = optim_conf.keys()
+        assert len(keys) == 1, f"the optim_conf key must be have one, but found {[key for key in keys]}"
+        key = list(keys)[0]
+        assert key in opti_dict.keys(), f"un support optimizer! support {[item for item in opti_dict.keys()]}, but get{key}"
+        # 如果没有lr参数, 则使用train.learning_rate, 或者是有这个key 但是没有值, 或者是值小于零
+        if 'lr' not in optim_conf[key].keys() or optim_conf[key]['lr'] is None or optim_conf[key]['lr'] <= .0:
+            optim_conf[key]['lr'] = config["train"]["learning_rate"]
+        print(f'''using config optimizer {key}({optim_conf[key]})''')
+        optim = opti_dict[key](model.parameters(), **optim_conf[key])
+    return optim

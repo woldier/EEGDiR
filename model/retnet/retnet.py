@@ -81,7 +81,7 @@ class RetNet(nn.Module):
 
 class DiR(AbstractDenoiser):
     def __init__(self, layers, hidden_dim, ffn_size, heads, double_v_dim=False, seq_len=512, mini_seq=16, drop_out=0.3):
-        super().__init__()
+        super().__init__(loss_function=nn.MSELoss())
         self.mini_seq = mini_seq
         if seq_len % mini_seq != 0:
             raise AttributeError("seq_len({}) % mini_seq({}) != 0".format(seq_len, mini_seq))
@@ -119,5 +119,5 @@ class DiR(AbstractDenoiser):
 if __name__ == "__main__":
     net = DiR(8, 512, 1024, 8)
     input = torch.randn(16, 512)
-    out = net(input, None)
+    out, loss = net(input, input)
     print(out.shape)
