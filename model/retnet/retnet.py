@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from einops.layers.torch import Rearrange
 from model.retnet.retention import MultiScaleRetention
+from model import AbstractDenoiser
 
 
 class RetNet(nn.Module):
@@ -78,7 +79,7 @@ class RetNet(nn.Module):
         return x_i, r_is
 
 
-class DiR(nn.Module):
+class DiR(AbstractDenoiser):
     def __init__(self, layers, hidden_dim, ffn_size, heads, double_v_dim=False, seq_len=512, mini_seq=16, drop_out=0.3):
         super().__init__()
         self.mini_seq = mini_seq
@@ -100,7 +101,7 @@ class DiR(nn.Module):
             nn.Flatten(start_dim=1)  # 展平
         )
 
-    def forward(self, x):
+    def _inner_forward(self, x):
         if len(x.shape) != 2:
             raise AttributeError("input tensor shape must be [B,L]")
         x = self.patchfiy(x)
@@ -116,7 +117,7 @@ class DiR(nn.Module):
 
 
 if __name__ == "__main__":
-    model = DiR(8, 512, 1024, 8)
+    net = DiR(8, 512, 1024, 8)
     input = torch.randn(16, 512)
-    out = model(input)
+    out = net(input, None)
     print(out.shape)
