@@ -86,3 +86,8 @@ If you find the cmd call scripts inelegant, you can also configure pycharm.
 
 enjoy!
 
+---
+This training framework is not perfect, 
+I will continue to update it. 
+
+If you have any ideas on how to improve this framework please issue or PR.
