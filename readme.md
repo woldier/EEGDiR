@@ -49,7 +49,72 @@ The project is built with `PyTorch 1.13.1`, `Python3.10`, `CUDA11.7`. For packag
 ```bash
 pip install -r requirements.txt
 ```
+---
+## How to 怎么配置训练卡
+We use `yaml` format configuration files, and import the configuration files via `pyyaml`.
 
+The configuration files are stored in the `{your_path}/config/` directory.
+
+You need to set the path to config in `train.py`.
+
+The configuration of `config.yml` is divided into four main sections, Model Configuration, Training Parameters Configuration, Dataset Configuration, Logging Configuration.
+
+
+```yaml
+#==========================model config================================
+model:
+  # The model initialization parameters are configured 
+  # and passed to the model initialization function as **kwargs.
+  config:  
+    layers: 1key
+    hidden_dim: 512
+    ffn_size: 1024
+    heads: 8
+    double_v_dim: False
+    seq_len: 512
+    mini_seq: 32
+    drop_out: 0.1
+  # Configure the path to the model's package file 
+  #Similar to `from model.retnet.retnet import DiR`
+  path: model.retnet.retnet 
+  class_name: DiR
+  # Weight file path, if there is a weight file it will be loaded.
+  weight_path:   
+
+#==========================training config================================
+train:
+  epochs: 5000 
+  batch_size: 1000  # Number of samples in a batch
+  save_img_rate: 1 # How many rounds to save a step
+  learning_rate: 0.0005
+#==========================dataset config================================
+dataset:
+  train:
+    dataset_path: ./data/dataset/EMG/train  # the path to load train data
+  test:
+    dataset_path: ./data/dataset/EMG/test # the path to load test data
+#==========================logs=======================================
+logs:
+  name: DiR_4_EOG_pathch16_mini_seq32_hidden_dim512_layer_1_EMG
+```
+
+对于log文件, 默认会保存在与`train.py`同级的目录下. 除此之外, 也会保存一份额外的配置文件. 以供保存训练细节.
+
+log文件夹的结构如下
+```text
+results/DiR_4_EOG_pathch16_mini_seq32_hidden_dim512_layer_1_EMG/
+├── img
+    ├── train
+    ├── test
+├── logs
+    ├── log.txt
+├── weight
+    ├── best.pth
+    ├── Epoch0.pth
+└── config.yml
+```
+
+---
 ## How to run
 1. Single GPU pycharm run
 The easiest way is to run `trian.py` directly under pycham
@@ -81,6 +146,7 @@ If you find the cmd call scripts inelegant, you can also configure pycharm.
 - Setting the ENV of RUN
 - Set the mode to module, and give the model name: `accelerate.commands.launch`.
 - Set the parameter `--gpu_ids=all` to set the available GPUs, and specify the script path `{your_path}/trian.py`.
+- Note that it is recommended to inform Accelerate of the current device hardware via `accelerate config` before running.
 
 ![pycharm_config](image/pycharm_config.png)
 
