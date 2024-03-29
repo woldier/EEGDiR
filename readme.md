@@ -50,7 +50,7 @@ The project is built with `PyTorch 1.13.1`, `Python3.10`, `CUDA11.7`. For packag
 pip install -r requirements.txt
 ```
 ---
-## How to 怎么配置训练卡
+## How to configure training cards
 We use `yaml` format configuration files, and import the configuration files via `pyyaml`.
 
 The configuration files are stored in the `{your_path}/config/` directory.
@@ -98,9 +98,10 @@ logs:
   name: DiR_4_EOG_pathch16_mini_seq32_hidden_dim512_layer_1_EMG
 ```
 
-对于log文件, 默认会保存在与`train.py`同级的目录下. 除此之外, 也会保存一份额外的配置文件. 以供保存训练细节.
+For the log file, it will be saved in the same directory as `train.py` by default. 
+In addition, an extra configuration file is saved. This is used to save the training details.
 
-log文件夹的结构如下
+The structure of the log folder is as follows:
 ```text
 results/DiR_4_EOG_pathch16_mini_seq32_hidden_dim512_layer_1_EMG/
 ├── img
