@@ -7,20 +7,16 @@ Bin Wang,
 </b>
 
 <hr>
-<i>Electroencephalogram (EEG) signals play a pivotal role in clinical medicine, brain research, and
-neurological disease studies. However, susceptibility to various physiological and environmental artifacts introduces noise in recorded EEG data, impeding accurate analysis of underlying brain activity.
-Denoising techniques are crucial to mitigate this challenge. Recent advancements in deep learningbased approaches exhibit substantial potential for enhancing the signal-to-noise ratio of EEG data
-compared to traditional methods. In the realm of large-scale language models (LLMs), the Retentive
-Network (Retnet) infrastructure, prevalent for some models, demonstrates robust feature extraction
-and global modeling capabilities. Recognizing the temporal similarities between EEG signals and
-natural language, we introduce the Retnet from natural language processing to EEG denoising. This
-integration presents a novel approach to EEG denoising, opening avenues for a profound understanding
-of brain activities and accurate diagnosis of neurological diseases. Nonetheless, direct application
-of Retnet to EEG denoising is unfeasible due to the one-dimensional nature of EEG signals, while
-natural language processing deals with two-dimensional data. To facilitate Retnet application to EEG
-denoising, we propose the signal embedding method, transforming one-dimensional EEG signals into
-two dimensions for use as network inputs. Experimental results validate the substantial improvement
-in denoising effectiveness achieved by the proposed method.</i>
+<i>Electroencephalogram (EEG) signals are essential in clinical medicine, brain research, and neurological disease studies. However, various physiological and environmental artifacts introduce noise, 
+hindering accurate analysis of brain activity. Recent advancements in deep learning offer promising solutions for enhancing EEG signal denoising compared to traditional methods. In this study, 
+we introduce the Retentive Network architecture from large language model (LLM) to EEG signal denoising, leveraging its robust feature extraction and global modeling capabilities. 
+To adapt Retnet to the one-dimensional nature of EEG signals, we propose a signal embedding method, 
+transforming EEG signals into two dimensions for network input. This integration presents a novel approach 
+to EEG denoising, opening avenues for a profound understanding of brain activities and accurate diagnosis 
+of neurological diseases. In addition, since the creation of deep learning datasets is very time-consuming 
+and cumbersome, we also provide a standardized ready-to-use dataset that has been preprocessed to accelerate 
+the progress of deep learning methods. Based on the dataset we produced and the proposed method, t
+he experimental results show that the denoising effect is significantly improved compared to the existing methods.</i>
 
 
 
