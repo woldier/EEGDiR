@@ -15,13 +15,18 @@ from utils.evalueate_func import RRMSE_spectral, RRMSE_temporal, CC, compute_par
 from utils.train_valid_utils import get_config, init_model, check_dir, config_backpack, load_dataset, init_optimizer
 from accelerate import Accelerator
 
-config_path = r'config/retnet/config.yml'
-# config_path = r'../config/EEGDnet/config.yml'
-# config_path = r'../config/LSTM/config.yml'
-# config_path = r'../config/SCNN/config.yml'
-# config_path = r'../config/1DResCNN/config.yml'
-# 获取所需的时区对象
-tz = pytz.timezone('Asia/Shanghai')  # 例如，这里使用了上海时区
+# =========================config path===========================================
+config_path = {
+    r'config/retnet/config.yml',
+    r'../config/EEGDnet/config.yml',
+    r'../config/SCNN/config.yml',
+    r'../config/1DResCNN/config.yml'
+}
+config_path = config_path[0]  # choose which path you want to use
+# =====================================================================
+# Get the desired time zone object
+# For example, the Shanghai time zone is used here
+tz = pytz.timezone('Asia/Shanghai')
 date_str = datetime.datetime.now(tz).strftime("%Y_%m_%d_%H")
 
 
@@ -165,7 +170,7 @@ def run():
     # init model
     model = init_model(config)
     train_dataset, test_dataset = load_dataset(config)
-    # 配置优化器
+    # Configuration Optimizer
     optim = init_optimizer(model, config)
     criterion = torch.nn.MSELoss()
     train_loop(model, train_dataset, test_dataset, optim, criterion, config, base_dir)

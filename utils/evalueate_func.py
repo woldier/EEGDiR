@@ -27,9 +27,13 @@ def PSD(x: np.ndarray):
 def CC(x: np.ndarray, f_y: np.ndarray, is_mean: bool = True):
     """
     计算 the correlation coefficient
+    Calculate the correlation coefficient
     :param x:
     :param f_y:
-    :param is_mean: 当有多个样本时, 是否要将多个样本的结果取均值, True 代表取均值, False 代表不取均值, 默认为True
+    :param is_mean:
+        当有多个样本时, 是否要将多个样本的结果取均值, True 代表取均值, False 代表不取均值, 默认为True.
+        When there are multiple samples, if or not the results of multiple samples should be averaged,
+        True means averaging, False means not averaging, the default is True.
     :return:
     """
     var_f_y = np.var(f_y, axis=-1, keepdims=True)
@@ -53,10 +57,15 @@ def CC(x: np.ndarray, f_y: np.ndarray, is_mean: bool = True):
 def RRMSE_spectral(x: np.ndarray, f_y: np.ndarray, is_mean: bool = True):
     """
     计算空间尺度上的RRMSE, 可以接受一个 1维度数组, 那么返回值就是该样本的RRMSE
-    也可以接受一个batch 的样本, 那么返回值是这一个batch的RRMSE的平均值
+    也可以接受一个batch 的样本, 那么返回值是这一个batch的RRMSE的平均值.
+    To compute the RRMSE on a spatial scale, you can accept a 1-dimensional array,
+    then the return value is the RRMSE of the sample.
+    Or we can accept a batch of samples, then the return value is the average of the RRMSE of the batch.
     :param x:
     :param f_y:
     :param is_mean: 是否要将多个样本的结果取均值, True 代表取均值, False 代表不取均值, 默认为True
+        If or not the results of multiple samples should be averaged,
+        True means averaging, False means not averaging, default is True.
     :return:
     """
     res = RMS(PSD(f_y) - PSD(x)) / RMS(PSD(x))
@@ -70,7 +79,9 @@ def RRMSE_temporal(x: np.ndarray, f_y: np.ndarray, is_mean: bool = True):
     """
     计算时间尺度的RRMSE, 可以接受一个 1维度数组, 那么返回值就是该样本的RRMSE
     也可以接受一个batch 的样本, 那么返回值是这一个batch的RRMSE的平均值
-
+     To calculate the RRMSE of temporal, you can accept a 1-dimensional array,
+     then the return value is the RRMSE of the sample.
+    Can also accept a batch of samples, then the return value is the average of the RRMSE of the batch.
     :param x: 无噪信号
     :param f_y: 网络预测的无噪声信号
     :param is_mean: 是否要将多个样本的结果取均值, True 代表取均值, False 代表不取均值, 默认为True

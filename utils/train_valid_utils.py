@@ -13,6 +13,7 @@ import os
 def get_config(path: str):
     """
     加载yaml 配置文件
+    Load the yaml configuration file
     :param path:
     :return:
     """
@@ -32,6 +33,7 @@ def init_model(conf: dict) -> torch.nn.Module:
 def _get_model(conf: dict) -> torch.nn.Module:
     """
     加载model
+    Load model
     :return:
     """
     model_path = conf["model"]["path"]
@@ -44,10 +46,12 @@ def _get_model(conf: dict) -> torch.nn.Module:
 def load_dataset(conf: dict, fmt: str = "torch"):
     """
 
-    :param conf: 配置文件
-    :param fmt: 数据集中加载的数据的格式
+    :param conf: 配置文件 config file
+    :param fmt: 数据集中加载的数据的格式  Format of data loaded in the dataset
         在datasets 中支持 [None, 'numpy', 'torch', 'tensorflow', 'pandas', 'arrow', 'jax']
+        Support in datasets [None, 'numpy', 'torch', 'tensorflow', 'pandas', 'arrow', 'jax'].
         此处仅仅支持 ['numpy', 'torch', 'pandas']
+        Only ['numpy', 'torch', 'pandas'] are supported here.
     :return:
     """
     _dataset_fmt_check(fmt)
@@ -61,6 +65,7 @@ def load_dataset(conf: dict, fmt: str = "torch"):
 def _dataset_fmt_check(fmt):
     """
     检查fmt的合法性
+    Checking the legitimacy of fmt
     :param fmt:
     :return:
     """
@@ -71,8 +76,9 @@ def _dataset_fmt_check(fmt):
 def load_dataset_with_path(path: str, fmt: str = "torch"):
     """
     从路径加载数据集
-    :param path: 数据集的路径
-    :param fmt: 数据格式
+    Load dataset from path
+    :param path: 数据集的路径  Path to the dataset
+    :param fmt: 数据格式  data format
     :return:
     """
     _dataset_fmt_check(fmt)
@@ -101,6 +107,7 @@ def load_dataset_with_path(path: str, fmt: str = "torch"):
 def check_dir(base_path):
     """
     检查输出文件是否存在, 没有的话则创建
+    Check if the output file exists, and create it if it doesn't.
     :return:
     """
     if not os.path.exists(base_path):
@@ -118,6 +125,7 @@ def config_backpack(conf_path, save_dir):
 def init_optimizer(model, config: dict) -> torch.optim.Optimizer:
     """
     初始化优化器
+    Initializing the Optimizer
     :param model:
     :param config:
     :return:
