@@ -1,10 +1,13 @@
 ## EEGDiR: Electroencephalogram denoising network for temporalinformation storage and global modeling through Retentive Network
 
+
+
 <b>
 Bin Wang, 
 <a href='https://dengfei-ailab.github.io'>Deng Fei</a>, 
 <a href='https://github.com/jiangpeifan'>Peifan Jiang</a>
 </b>
+<b>
 
 <hr>
 <i>Electroencephalogram (EEG) signals are essential in clinical medicine, brain research, and neurological disease studies. However, various physiological and environmental artifacts introduce noise, 
@@ -18,7 +21,14 @@ and cumbersome, we also provide a standardized ready-to-use dataset that has bee
 the progress of deep learning methods. Based on the dataset we produced and the proposed method, t
 he experimental results show that the denoising effect is significantly improved compared to the existing methods.</i>
 
+--- 
+</b>
+</br>
 
+Congratulations! This paper was accepted by <a href='https://www.sciencedirect.com/journal/computers-in-biology-and-medicine/vol/177/suppl/C'>Elsevier CIBM</a>.
+</br>
+<a href='https://www.sciencedirect.com/science/article/abs/pii/S001048252400711X'>https://www.sciencedirect.com/science/article/abs/pii/S001048252400711X</a>
+</b>
 
 ---
 ![EEGDiR](image/fig2.jpg)
