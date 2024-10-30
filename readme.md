@@ -37,19 +37,29 @@ dataset is available at: https://huggingface.co/datasets/woldier/eeg_denoise_dat
 
 The method chosen in this article is to download and extract `*.tar.gz` to the `{your_path}/data` directory.
 
+Alternatively, the dataset can be prepared with `data/data_processing_4_EEGDenoiseNet.py` and `data_processing_4_SS2016.py`.
+
 The structure is as follows:
 ```text
-data/dataset/
-├── EMG
-    ├── train
-    ├── test
-├── EOG
-    ├── train
-    ├── test
-├── SS-EOG
-    ├── train
-    ├── test
-└── test
+data/
+├── dataset/
+    ├── EMG
+    │   ├── train
+    │   ├── test
+    ├── EOG
+    │   ├── train
+    │   ├── test
+    ├── SS-EOG
+    │   ├── train
+    │   ├── test
+├── source/
+    ├── EEG_all_epochs.npy  (EEGDenoiseNet)
+    ├── EMG_all_epochs.npy  (EEGDenoiseNet)
+    ├── EOG_all_epochs.npy  (EEGDenoiseNet)
+    ├── Contaminated_Data.mat  (SS2016)
+    └── Pure_Data.mat  (SS2016)
+├── data_processing_4_EEGDenoiseNet.py
+└──  data_processing_4_SS2016.py
 ```
 
 ---
